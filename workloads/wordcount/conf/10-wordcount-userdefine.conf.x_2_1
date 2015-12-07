@@ -1,0 +1,6 @@
+
+# override configurations here
+hibench.default.map.parallelism		1
+hibench.default.shuffle.parallelism 	1
+hibench.wordcount.datasize 		tiny
+
