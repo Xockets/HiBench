@@ -78,6 +78,10 @@ HiBenchEnvPropMapping=dict(
     # For Sort, Terasort, Wordcount
     DATASIZE="hibench.workload.datasize",
     BYTES_TOTAL_NAME="hibench.randomtextwriter.bytestotal.name",
+    MIN_KEY_NAME="hibench.randomtextwriter.minwordskey.name",
+    MAX_KEY_NAME="hibench.randomtextwriter.maxwordskey.name",
+    MIN_KEY="hibench.randomtextwriter.minwordskey",
+    MAX_KEY="hibench.randomtextwriter.maxwordskey",
 
     # For hive related workload, data scale
     PAGES="hibench.workload.pages",

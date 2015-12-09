@@ -78,10 +78,10 @@ import org.apache.hadoop.util.ToolRunner;
  *     <value>1099511627776</value>
  *   </property>
  * </configuration>}</pre>
- * Equivalently, {@link RandomWriter} also supports all the above options
+ * Equivalently, {@link XocketsRandomWriter} also supports all the above options
  * and ones supported by {@link org.apache.hadoop.util.GenericOptionsParser} via the command-line.
  */
-public class RandomWriter extends Configured implements Tool {
+public class XocketsRandomWriter extends Configured implements Tool {
   public static final String TOTAL_BYTES = "mapreduce.randomwriter.totalbytes";
   public static final String BYTES_PER_MAP =
     "mapreduce.randomwriter.bytespermap";
@@ -269,7 +269,7 @@ public class RandomWriter extends Configured implements Tool {
 
     Job job = Job.getInstance(conf);
 
-    job.setJarByClass(RandomWriter.class);
+    job.setJarByClass(XocketsRandomWriter.class);
     job.setJobName("random-writer");
     FileOutputFormat.setOutputPath(job, outDir);
     job.setOutputKeyClass(BytesWritable.class);
@@ -297,7 +297,7 @@ public class RandomWriter extends Configured implements Tool {
   }
 
   public static void main(String[] args) throws Exception {
-    int res = ToolRunner.run(new Configuration(), new RandomWriter(), args);
+    int res = ToolRunner.run(new Configuration(), new XocketsRandomWriter(), args);
     System.exit(res);
   }
 

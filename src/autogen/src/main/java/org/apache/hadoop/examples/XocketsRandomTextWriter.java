@@ -74,13 +74,13 @@ import org.apache.hadoop.util.ToolRunner;
  *   </property>
  * </configuration>}</pre>
  *
- * Equivalently, {@link RandomTextWriter} also supports all the above options
+ * Equivalently, {@link XocketsRandomTextWriter} also supports all the above options
  * and ones supported by {@link org.apache.hadoop.util.Tool} via the command-line.
  *
  * To run: bin/hadoop jar hadoop-${version}-examples.jar randomtextwriter
  *            [-outFormat <i>output format class</i>] <i>output</i>
  */
-public class RandomTextWriter extends Configured implements Tool {
+public class XocketsRandomTextWriter extends Configured implements Tool {
     public static final String TOTAL_BYTES =
         "mapreduce.randomtextwriter.totalbytes";
     public static final String BYTES_PER_MAP =
@@ -211,13 +211,13 @@ public class RandomTextWriter extends Configured implements Tool {
 
         Job job = Job.getInstance(conf);
 
-        job.setJarByClass(RandomTextWriter.class);
+        job.setJarByClass(XocketsRandomTextWriter.class);
         job.setJobName("random-text-writer");
 
         job.setOutputKeyClass(Text.class);
         job.setOutputValueClass(Text.class);
 
-        job.setInputFormatClass(RandomWriter.RandomInputFormat.class);
+        job.setInputFormatClass(XocketsRandomWriter.RandomInputFormat.class);
         job.setMapperClass(RandomTextMapper.class);
 
         Class<? extends OutputFormat> outputFormatClass =
@@ -259,7 +259,7 @@ public class RandomTextWriter extends Configured implements Tool {
     }
 
     public static void main(String[] args) throws Exception {
-        int res = ToolRunner.run(new Configuration(), new RandomTextWriter(), args);
+        int res = ToolRunner.run(new Configuration(), new XocketsRandomTextWriter(), args);
         System.exit(res);
     }
 
