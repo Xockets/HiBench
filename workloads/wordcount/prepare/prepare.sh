@@ -24,7 +24,8 @@ show_bannar start
 
 rmr-hdfs $INPUT_HDFS || true
 START_TIME=`timestamp`
-run-hadoop-job ${HADOOP_EXAMPLES_JAR} randomtextwriter \
+#run-hadoop-job ${HADOOP_EXAMPLES_JAR} randomtextwriter \
+run-hadoop-job ${DATATOOLS} org.apache.hadoop.examples.RandomTextWriter \
     -D ${BYTES_TOTAL_NAME}=${DATASIZE} \
     -D ${MAP_CONFIG_NAME}=${NUM_MAPS} \
     -D ${REDUCER_CONFIG_NAME}=${NUM_REDS} \
