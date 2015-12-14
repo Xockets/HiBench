@@ -1,0 +1,11 @@
+
+# override configurations here
+hibench.default.map.parallelism		1
+hibench.default.shuffle.parallelism 	1
+hibench.scale.profile			tiny
+hibench.workload.input			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.input}.x_2_3
+hibench.workload.output			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.output}.x_2_3
+
+# Need keys (set maxwordskey to MSS value)
+hibench.randomtextwriter.minwordskey	2
+hibench.randomtextwriter.maxwordskey	2

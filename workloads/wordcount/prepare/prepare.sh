@@ -24,7 +24,16 @@ show_bannar start
 
 rmr-hdfs $INPUT_HDFS || true
 START_TIME=`timestamp`
-run-hadoop-job ${HADOOP_EXAMPLES_JAR} randomtextwriter \
+#run-hadoop-job ${HADOOP_EXAMPLES_JAR} randomtextwriter \
+# Run Xockets version of RandomTextWriter instead.  With it, you can 
+# control the length of the keys with the following variables:
+# hibench.randomtextwriter.minwordskey	<n>
+# hibench.randomtextwriter.maxwordskey	<n>
+
+run-hadoop-job ${DATATOOLS} \
+    org.apache.hadoop.examples.XocketsRandomTextWriter \
+    -D ${MIN_KEY_NAME}=${MIN_KEY} \
+    -D ${MAX_KEY_NAME}=${MAX_KEY} \
     -D ${BYTES_TOTAL_NAME}=${DATASIZE} \
     -D ${MAP_CONFIG_NAME}=${NUM_MAPS} \
     -D ${REDUCER_CONFIG_NAME}=${NUM_REDS} \

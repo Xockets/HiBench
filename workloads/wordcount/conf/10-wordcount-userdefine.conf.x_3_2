@@ -1,0 +1,9 @@
+
+# override configurations here
+hibench.default.map.parallelism		2
+hibench.default.shuffle.parallelism 	1
+hibench.scale.profile			small
+hibench.workload.input			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.input}.x_3_2
+hibench.workload.output			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.output}.x_3_2
+
+
