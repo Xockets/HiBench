@@ -21,6 +21,12 @@
             <groupId>org.apache.mahout</groupId>
             <artifactId>mahout-core</artifactId>
             <version>${mahout.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.apache.hadoop</groupId>
+                    <artifactId>hadoop-core</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
         <dependency>
             <groupId>org.apache.mahout</groupId>
@@ -29,8 +35,9 @@
         </dependency>
         <dependency>
             <groupId>org.apache.hadoop</groupId>
-            <artifactId>hadoop-core</artifactId>
-            <version>${hadoop.mr1.version}</version>
+            <artifactId>hadoop-client</artifactId>
+            <version>${hadoop.mr2.version}</version>
+            <scope>provided</scope>
         </dependency>
         <dependency>
             <groupId>org.uncommons.maths</groupId>

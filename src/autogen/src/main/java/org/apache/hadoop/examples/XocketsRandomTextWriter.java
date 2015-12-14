@@ -18,11 +18,6 @@
 
 package org.apache.hadoop.examples;
 
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Random;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
@@ -31,12 +26,19 @@ import org.apache.hadoop.mapred.ClusterStatus;
 import org.apache.hadoop.mapred.JobClient;
 import org.apache.hadoop.mapred.JobConf;
 import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.JobContext;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.OutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Random;
 
 /**
  * This program uses map/reduce to just run a distributed job where there is
@@ -191,22 +193,31 @@ public class XocketsRandomTextWriter extends Configured implements Tool {
         }
 
         Configuration conf = getConf();
+
         JobClient client = new JobClient(new JobConf(conf));
+
         ClusterStatus cluster = client.getClusterStatus();
+
         int numMapsPerHost = conf.getInt(MAPS_PER_HOST, 10);
+
         long numBytesToWritePerMap = conf.getLong(BYTES_PER_MAP,
             1*1024*1024*1024);
+
         if (numBytesToWritePerMap == 0) {
             System.err.println("Cannot have " + BYTES_PER_MAP +" set to 0");
             return -2;
         }
+
         long totalBytesToWrite = conf.getLong(TOTAL_BYTES,
             numMapsPerHost*numBytesToWritePerMap*cluster.getTaskTrackers());
+
         int numMaps = (int) (totalBytesToWrite / numBytesToWritePerMap);
+
         if (numMaps == 0 && totalBytesToWrite > 0) {
             numMaps = 1;
             conf.setLong(BYTES_PER_MAP, totalBytesToWrite);
         }
+
         conf.setInt("mapreduce.job.maps", numMaps);
 
         Job job = Job.getInstance(conf);
@@ -248,7 +259,13 @@ public class XocketsRandomTextWriter extends Configured implements Tool {
 
         Date startTime = new Date();
         System.out.println("Job started: " + startTime);
-        int ret = job.waitForCompletion(true) ? 0 : 1;
+
+        job.submit();
+
+        boolean bSuccessful = job.waitForCompletion(true);
+        
+        int ret = bSuccessful ? 0 : 1;
+
         Date endTime = new Date();
         System.out.println("Job ended: " + endTime);
         System.out.println("The job took " +
