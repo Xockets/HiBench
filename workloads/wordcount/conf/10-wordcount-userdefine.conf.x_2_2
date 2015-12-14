@@ -3,8 +3,8 @@
 hibench.default.map.parallelism		1
 hibench.default.shuffle.parallelism 	1
 hibench.scale.profile			tiny
-hibench.workload.input			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.input}.x_2_1
-hibench.workload.output			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.output}.x_2_1
+hibench.workload.input			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.input}.x_2_2
+hibench.workload.output			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.output}.x_2_2
 
 # Need keys (set maxwordskey to MSS value)
 hibench.randomtextwriter.minwordskey	1
