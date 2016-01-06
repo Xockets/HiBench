@@ -18,19 +18,20 @@
 Mapping from properties to environment variable names
 """
 HiBenchEnvPropMappingMandatory=dict(
+    USER="hibench.user",
     JAVA_BIN="java.bin",
     HADOOP_HOME="hibench.hadoop.home",
     SPARK_HOME="hibench.spark.home",
     HDFS_MASTER="hibench.hdfs.master",
     SPARK_MASTER="hibench.spark.master",
-    HADOOP_VERSION="hibench.hadoop.version",       
-    HADOOP_RELEASE="hibench.hadoop.release",        
-    HADOOP_EXAMPLES_JAR="hibench.hadoop.examples.jar", 
-    HADOOP_EXECUTABLE="hibench.hadoop.executable", 
+    HADOOP_VERSION="hibench.hadoop.version",
+    HADOOP_RELEASE="hibench.hadoop.release",
+    HADOOP_EXAMPLES_JAR="hibench.hadoop.examples.jar",
+    HADOOP_EXECUTABLE="hibench.hadoop.executable",
     HADOOP_CONF_DIR="hibench.hadoop.configure.dir",
     SPARK_VERSION="hibench.spark.version",
     HIBENCH_HOME="hibench.home",
-    HIBENCH_CONF="hibench.configure.dir", 
+    HIBENCH_CONF="hibench.configure.dir",
 
     DEPENDENCY_DIR="hibench.dependency.dir",
     REPORT_COLUMN_FORMATS="hibench.report.formats",
@@ -134,7 +135,7 @@ HiBenchEnvPropMapping=dict(
     STREAMING_DATA2_CLUSTER_DIR="hibench.streamingbench.datagen.data2_cluster.dir",
     STREAMING_PARTITIONS="hibench.streamingbench.partitions",
     DATA_GEN_JAR="hibench.streamingbench.datagen.jar",
-    
+
     STREAMING_DATAGEN_MODE="hibench.streamingbench.prepare.mode",
     STREAMING_DATAGEN_RECORDS="hibench.streamingbench.prepare.push.records",
 
@@ -153,7 +154,7 @@ HiBenchEnvPropMapping=dict(
 
     STREAMING_SAMZA_PACKAGE_LOCAL_PATH="samza_internal.yarn.package.path",
     STREAMING_SAMZA_PACKAGE_HDFS_PATH="samza.yarn.package.path",
-    
+
     )
 
 HiBenchPropEnvMapping=dict([(v,k) for k, v in HiBenchEnvPropMapping.items()])
