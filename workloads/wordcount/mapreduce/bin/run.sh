@@ -14,10 +14,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+xflag=0
 workload_folder=`dirname "$0"`
 workload_folder=`cd "$workload_folder"; pwd`
 workload_root=${workload_folder}/../..
 . "${workload_root}/../../bin/functions/load-bench-config.sh"
+
+while getopts 'x' OPTION
+do
+    case $OPTION in
+    x)  xflag=1
+        ;;
+    esac
+done
 
 enter_bench HadoopWordcount ${workload_root} ${workload_folder}
 show_bannar start
@@ -37,6 +46,14 @@ run-hadoop-job ${HADOOP_EXAMPLES_JAR} wordcount ${COMPRESS_OPT} \
 END_TIME=`timestamp`
 
 gen_report ${START_TIME} ${END_TIME} ${SIZE}
+
+if [ $xflag = ]
+then
+    rmr-hdfs ${OUTPUT_HDFS}.xockets || true
+    xockets-executor -r ${NUM_REDS} -m ${NUM_MAPS} wordcount \
+        ${INPUT_HDFS} ${OUTPUT_HDFS}.xockets
+fi
+
 show_bannar finish
 leave_bench
 
