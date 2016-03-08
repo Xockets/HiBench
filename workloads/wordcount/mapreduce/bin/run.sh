@@ -47,7 +47,7 @@ END_TIME=`timestamp`
 
 gen_report ${START_TIME} ${END_TIME} ${SIZE}
 
-if [ $xflag = ]
+if [ $xflag = 1 ]
 then
     rmr-hdfs ${OUTPUT_HDFS}.xockets || true
     xockets-executor -r ${NUM_REDS} -m ${NUM_MAPS} wordcount \
