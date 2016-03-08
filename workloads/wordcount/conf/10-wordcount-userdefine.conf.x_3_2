@@ -6,4 +6,6 @@ hibench.scale.profile			small
 hibench.workload.input			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.input}.x_3_2
 hibench.workload.output			${hibench.wordcount.base_hdfs}/${hibench.workload.dir.name.output}.x_3_2
 
-
+# Don't combine any words for keys
+hibench.randomtextwriter.minwordskey	0
+hibench.randomtextwriter.maxwordskey	0
