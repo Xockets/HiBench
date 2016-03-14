@@ -51,6 +51,10 @@ if [ $xflag = 1 ]
 then
     rmr-hdfs ${OUTPUT_HDFS}.xockets || true
     xockets-executor -r ${NUM_REDS} -m ${NUM_MAPS} wordcount \
+        -D mapreduce.inputformat.class=org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat \
+        -D mapreduce.outputformat.class=org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat \
+        -D mapreduce.job.inputformat.class=org.apache.hadoop.mapreduce.lib.input.SequenceFileInputFormat \
+        -D mapreduce.job.outputformat.class=org.apache.hadoop.mapreduce.lib.output.SequenceFileOutputFormat \
         ${INPUT_HDFS} ${OUTPUT_HDFS}.xockets
 fi
 
